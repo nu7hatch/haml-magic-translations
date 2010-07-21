@@ -31,7 +31,6 @@ time with translations.
      "Rakefile",
      "TODO",
      "VERSION",
-     "haml-magic-translations-0.1.1.gem",
      "haml-magic-translations.gemspec",
      "init.rb",
      "lib/haml-magic-translations.rb",
