@@ -81,6 +81,7 @@ module Haml::MagicTranslations
         unless action && action != '!' || action == '!' && value[0] == '=' || value.empty?
           value, interpolation_arguments = prepare_i18n_interpolation(value)
           value = "\#{_('#{value.gsub(/'/, "\\\\'")}') % #{interpolation_arguments}\}\n"
+          @precompiled << value
         end
       end
       [tag_name, attributes, attributes_hashes, object_ref, nuke_outer_whitespace,
@@ -100,6 +101,7 @@ module Haml::MagicTranslations
         value, interpolation_arguments = prepare_i18n_interpolation(text, 
           :escape_html => options[:escape_html])
         value = "_('#{value.gsub(/'/, "\\\\'")}') % #{interpolation_arguments}\n"
+        @precompiled << value
         push_script(value, :escape_html => false)
       else
         if contains_interpolation?(text)
