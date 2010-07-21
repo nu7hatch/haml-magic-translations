@@ -13,6 +13,8 @@ require 'haml/magic_translations'
 Haml::Template.options[:ugly] = false
 Haml::Template.options[:format] = :xhtml
 
-I18n::Backend::Simple.send(:include, I18n::Backend::Gettext)
-I18n.load_path += Dir[File.join(File.dirname(__FILE__), "locales/*.{po}")]
-
+def render(text, options = {}, &block)
+  scope  = options.delete(:scope)  || Object.new
+  locals = options.delete(:locals) || {}
+  Haml::Engine.new(text, options).to_html(scope, locals, &block)
+end

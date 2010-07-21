@@ -2,11 +2,12 @@
 
 This plugin provides "magical translations" in your .haml files. What does it
 mean? It's mean that all your raw texts in templates will be automatically
-translated by Gettext backend from I18n. No more complicated translation keys
-and ugly translation methods in views. Now you can only write in your language,
-nothing more. At the end of your work you can easy find all phrases to translate
-and generate .po files for it. This type of files are also more readable and 
-easier to translate, thanks to it you save your time with translations.     
+translated by GetText, FastGettext or Gettext backend from I18n. No more 
+complicated translation keys and ugly translation methods in views. Now you can
+only write in your language, nothing more. At the end of your work you can easy 
+find all phrases to translate and generate .po files for it. This type of files 
+are also more readable and easier to translate, thanks to it you save your 
+time with translations.
 
 === Installation
 
@@ -22,20 +23,20 @@ or
 
 === Gettings started with Gettext
 
-To use automatical translations you have to using new I18n with Gettext backend.
-Magic translations plugin will automatically enable it for you, so you have to 
-only define somewhere you path to .po files with your translations. 
+To use automatical translations you have to using new I18n with Gettext backend, 
+GetText or FastGettext, properly installed and configured. To enable plugin
+you have to do following things:
+
+  Haml::Template.enable_magic_translations(:i18n) # this backend is used by default
+  
+Available backends are `:i18n`, `:gettext and `:fast_gettext`
+
+Now you have to add path to all your .po files with locales. Eg. for i18n backend
+it will be something like:    
   
   I18n.load_path += Dir["path/to/your/locales/*.{po}")]
-
-=== Time for translations
-
-When gem is installed, then magic translations are enabled by default. But when 
-somehow you will not be able to use it, set one of Haml options - `:magic_translations`
-
-  Haml::Template.options[:magic_translations] = true
   
-And that's all. 
+And that's all. Now you can enjoy automatically translations in your .haml files!
 
 === Examples
 

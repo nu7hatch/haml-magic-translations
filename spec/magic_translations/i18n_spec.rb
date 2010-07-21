@@ -1,12 +1,9 @@
-require File.join(File.dirname(__FILE__), 'spec_helper.rb')
+require File.join(File.dirname(__FILE__), '../spec_helper.rb')
 
-def render(text, options = {}, &block)
-  scope  = options.delete(:scope)  || Object.new
-  locals = options.delete(:locals) || {}
-  Haml::Engine.new(text, options).to_html(scope, locals, &block)
-end
+Haml::Template.enable_magic_translations(:i18n)
+I18n.load_path += Dir[File.join(File.dirname(__FILE__), "../locales/*.{po}")]
 
-describe 'Haml magic translations' do 
+describe 'Haml magic translations with I18n' do 
 
   it 'should allow to set :magic_translations option in Haml::Template' do
     Haml::Template.options.key?(:magic_translations).should be_true

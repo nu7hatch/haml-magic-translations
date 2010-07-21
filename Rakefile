@@ -8,18 +8,17 @@ begin
     gem.description = <<-DESCR
 This plugin provides "magical translations" in your .haml files. What does it
 mean? It's mean that all your raw texts in templates will be automatically
-translated by Gettext backend from I18n. No more complicated translation keys
-and ugly translation methods in views. Now you can only write in your language,
-nothing more. At the end of your work you can easy find all phrases to translate
-and generate .po files for it. This type of files are also more readable and 
-easier to translate, thanks to it you save your time with translations. 
+translated by GetText, FastGettext or Gettext backend from I18n. No more 
+complicated translation keys and ugly translation methods in views. Now you can
+only write in your language, nothing more. At the end of your work you can easy 
+find all phrases to translate and generate .po files for it. This type of files 
+are also more readable and easier to translate, thanks to it you save your 
+time with translations.
     DESCR
     gem.email = "kriss.kowalik@gmail.com"
     gem.homepage = "http://github.com/kriss/haml-magic-translations"
     gem.authors = ["Kriss Kowalik"]
     gem.add_development_dependency "haml", ">= 3.0.0"
-    gem.add_development_dependency "i18n", ">= 0.4.1"
-    gem.add_development_dependency "gettext", ">= 2.0.0"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

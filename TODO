@@ -1,3 +1,3 @@
 * More info about .po files generator
 * Basic examples of usage .po files generator for Rails
-
+* Tests for GetText and FastGettext
