@@ -40,20 +40,20 @@ HAML
   
   it 'should translate text with multiline plain text' do 
     Haml::Template.options[:magic_translations] = true
-    I18n.locale = :en
+    I18n.locale = :pl
     <<HTML.should == render(<<HAML)
-<p>Magic translations works!</p>
+<p>Magiczne tłumaczenie działa!</p>
 <p>
-  Now we will check multiline strings,
-  which should be also translated
-  with interpolation INTERPOLATION
+  Kolejny wieloliniowy tekst,
+  który powinien zostać przetłumaczony,
+  interpolacja INTERPOLATION też działa!
 </p>
 HTML
 %p Magic translations works!
 %p 
   Now we will check multiline strings,
-  which should be also translated
-  with interpolation #{'Interpolation'.upcase}
+  which should be also translated,
+  with interpolation \#{'Interpolation'.upcase}
 HAML
   end
   

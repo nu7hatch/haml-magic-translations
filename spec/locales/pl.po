@@ -5,3 +5,12 @@ msgstr "Magiczne tłumaczenie działa!"
 msgid "Here with interpolation, and everything thanks to %s and %s"
 msgstr "A tutaj razem z interpolacją, a to wszystko dzięki połączeniu %s i %s"
 
+msgid "Now we will check multiline strings,"
+msgstr "Kolejny wieloliniowy tekst,"
+
+msgid "which should be also translated,"  
+msgstr "który powinien zostać przetłumaczony,"
+
+msgid "with interpolation %s"
+msgstr "interpolacja %s też działa!"
+

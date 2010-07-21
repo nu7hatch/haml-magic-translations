@@ -130,6 +130,7 @@ module Haml::MagicTranslations
   end
 end
 
+I18n::Backend::Simple.send(:include, I18n::Backend::Gettext)
 Haml::Engine.send(:include, Haml::MagicTranslations)
 Haml::Helpers.send(:include, I18n::Gettext::Helpers)
 Haml::Template.options[:magic_translations] = true

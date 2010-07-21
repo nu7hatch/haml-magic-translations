@@ -23,21 +23,9 @@ or
 === Gettings started with Gettext
 
 To use automatical translations you have to using new I18n with Gettext backend.
-It's very easy to include Gettext backed to default one, thanks to this you 
-can use both types of translations in the same time: standard .yml and 
-Gettext .po files. Below is the easiest way to enable Gettext in I18n:
-
-  require 'i18n/backend/gettext'
-  require 'i18n/gettext/helper'
+Magic translations plugin will automatically enable it for you, so you have to 
+only define somewhere you path to .po files with your translations. 
   
-  # You can include Gettext helpers directly from Object class.
-  # If you think that is to radical move, then you can include those helpers
-  # eg. into ActionView::Base class only. 
-  Object.send(:include, I18n::Gettext::Helpers)
-  
-  I18n::Backend::Simple.send(:include, I18n::Backend::Gettext)
-  
-  # We have to add paths to .po files manualy.  
   I18n.load_path += Dir["path/to/your/locales/*.{po}")]
 
 === Time for translations
@@ -62,7 +50,10 @@ Those translations are allso allowing you to use standard Haml interpolation.
 You can easy write: 
   
   %p This is my text with #{"interpolation".upcase}... Great, isn't it?
-  
+  %p
+    This multiline string
+    Will be also translated
+    
 And text from codes above will be stored in .po files as:
 
   # File test1.haml, line 1
@@ -72,6 +63,16 @@ And text from codes above will be stored in .po files as:
   # File test2.haml, line 1
   msgid "This is my text with %s... Great, isn't it?"
   msgstr "Next one %s translation!"
+  
+  # File test4.haml, line 3
+  msgid "This multiline string"
+  msgstr ""
+  
+  # File test2.haml, line 4
+  msgid "Will be also translated"
+  msgstr ""
+  
+Notice that in multiline strings each line is translated separatelly. 
   
 Generator for .po files also includes information where your phrases are placed
 in filesystem. Thanks to it you don't forget about any even small word to 
