@@ -1,0 +1,83 @@
+== Magic Translations
+
+This plugin provides "magical translations" in your .haml files. What does it
+mean? It's mean that all your raw texts in templates will be automatically
+translated by Gettext backend from I18n. No more complicated translation keys
+and ugly translation methods in views. Now you can only write in your language,
+nothing more. At the end of your work you can easy find all phrases to translate
+and generate .po files for it. This type of files are also more readable and 
+easier to translate, thanks to it you save your time with translations.     
+
+=== Installation
+
+You can install haml-magic-translations directly from rubygems:
+
+  gem install haml-magic-translations
+  
+...or as Ruby on Rails plugin:
+
+  script/plugin install git://github.com/kriss/haml-magic-translations
+or
+  rails plugin install git://github.com/kriss/haml-magic-translations 
+
+=== Gettings started with Gettext
+
+To use automatical translations you have to using new I18n with Gettext backend.
+It's very easy to include Gettext backed to default one, thanks to this you 
+can use both types of translations in the same time: standard .yml and 
+Gettext .po files. Below is the easiest way to enable Gettext in I18n:
+
+  require 'i18n/backend/gettext'
+  require 'i18n/gettext/helper'
+  
+  # You can include Gettext helpers directly from Object class.
+  # If you think that is to radical move, then you can include those helpers
+  # eg. into ActionView::Base class only. 
+  Object.send(:include, I18n::Gettext::Helpers)
+  
+  I18n::Backend::Simple.send(:include, I18n::Backend::Gettext)
+  
+  # We have to add paths to .po files manualy.  
+  I18n.load_path += Dir["path/to/your/locales/*.{po}")]
+
+=== Time for translations
+
+When gem is installed, then magic translations are enabled by default. But when 
+somehow you will not be able to use it, set one of Haml options - `:magic_translations`
+
+  Haml::Template.options[:magic_translations] = true
+  
+And that's all. 
+
+=== Examples
+
+Now you can write what you want, and at the end of work you 
+will easy found all phrases to translate. Check out following example:
+
+  %p This is my simple dummy text.
+  %p And more lorem ipsum...
+  %p= link_to _("This will be also translated"), "#"
+  
+Those translations are allso allowing you to use standard Haml interpolation. 
+You can easy write: 
+  
+  %p This is my text with #{"interpolation".upcase}... Great, isn't it?
+  
+And text from codes above will be stored in .po files as:
+
+  # File test1.haml, line 1
+  msgid "This is my simple dummy text"
+  msgstr "This is my dummy translation of dummy text"
+  
+  # File test2.haml, line 1
+  msgid "This is my text with %s... Great, isn't it?"
+  msgstr "Next one %s translation!"
+  
+Generator for .po files also includes information where your phrases are placed
+in filesystem. Thanks to it you don't forget about any even small word to 
+translate. 
+
+=== Copyrights
+
+Kriss Kowalik (kriss.kowalik@gmail.com)
+

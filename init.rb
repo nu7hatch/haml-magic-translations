@@ -1,0 +1,1 @@
+require 'haml-magic-translations'

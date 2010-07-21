@@ -1,0 +1,7 @@
+
+msgid "Magic translations works!"
+msgstr ""
+
+msgid "Here with interpolation, and everything thanks to %s and %s"
+msgstr ""
+
