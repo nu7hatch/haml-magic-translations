@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{haml-magic-translations}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kriss Kowalik"]
@@ -29,6 +29,8 @@ easier to translate, thanks to it you save your time with translations.
      "README.rdoc",
      "Rakefile",
      "TODO",
+     "VERSION",
+     "haml-magic-translations.gemspec",
      "init.rb",
      "lib/haml-magic-translations.rb",
      "lib/haml/magic_translations.rb",
